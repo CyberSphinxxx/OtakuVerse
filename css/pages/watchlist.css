@@ -1,4 +1,3 @@
-
 /* Watchlist page specific styles */
 .watchlist-filters {
   display: flex;
@@ -110,9 +109,9 @@
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
-  display: grid;
-  grid-template-columns: auto 1fr;
   transition: transform var(--transition-normal) ease, box-shadow var(--transition-normal) ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .watchlist-item:hover {
@@ -121,27 +120,31 @@
 }
 
 .watchlist-image-container {
-  width: 120px;
+  width: 100%;
+  aspect-ratio: 2 / 3;
   overflow: hidden;
+  position: relative;
 }
 
 .watchlist-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 .watchlist-info {
-  padding: 1.25rem;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   position: relative;
 }
 
 .watchlist-status {
   position: absolute;
-  top: 1.25rem;
-  right: 1.25rem;
+  top: -1.5rem;
+  right: 0.75rem;
   font-size: 0.75rem;
   font-weight: 600;
   padding: 0.25rem 0.75rem;
@@ -167,18 +170,20 @@
 }
 
 .watchlist-title {
-  font-size: 1.25rem;
-  margin-right: 100px;
+  font-size: 1rem;
+  font-weight: 600;
   margin-bottom: 0.5rem;
+  line-height: 1.4;
+  color: var(--text-primary);
 }
 
 .watchlist-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
   color: var(--text-secondary);
-  font-size: 0.875rem;
+  font-size: 0.75rem;
 }
 
 .watchlist-meta-item {
@@ -211,7 +216,7 @@
 
 .watchlist-actions {
   display: flex;
-  gap: 0.75rem;
+  gap: 0.5rem;
   margin-top: auto;
 }
 
@@ -221,7 +226,7 @@
   justify-content: center;
   background: transparent;
   border: none;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   color: var(--text-secondary);
   padding: 0.5rem 0.75rem;
   border-radius: var(--radius-md);
@@ -278,20 +283,9 @@
   justify-content: space-between;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
   .watchlist-container {
     grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .watchlist-item {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-  
-  .watchlist-image-container {
-    width: 100%;
-    height: 200px;
   }
 }
 

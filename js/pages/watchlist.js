@@ -1,4 +1,3 @@
-
 /**
  * Watchlist page functionality for OtakuVerse
  */
@@ -312,7 +311,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   
   /**
-   * Fetch anime details from API
+   * Fetch anime details from API and render them
    * @param {number} animeId - Anime ID
    */
   async function fetchAnimeDetails(animeId) {
@@ -323,28 +322,26 @@ document.addEventListener('DOMContentLoaded', () => {
       const data = await response.json();
       const anime = data.data;
       
-      // Build detail view from anime-detail.js component
-      if (window.components && window.components.createAnimeDetail) {
-        const detailView = window.components.createAnimeDetail(anime);
-        modalContent.innerHTML = '';
-        modalContent.appendChild(detailView);
-        
-        // Initialize Lucide icons
-        if (window.lucide) {
-          window.lucide.createIcons();
-        }
-        
-        // Fix for watchlist button not clickable due to z-index
-        const watchlistOptionsInModal = modalContent.querySelectorAll('.watchlist-options');
-        watchlistOptionsInModal.forEach(options => {
-          options.style.zIndex = '1050';
-        });
-      } else {
-        modalContent.innerHTML = `
-          <div class="error-message">
-            <p>Could not load anime details. Component not found.</p>
-          </div>
-        `;
+      // Render the anime details directly
+      modalContent.innerHTML = `
+        <div class="modal-header">
+          <h2>${anime.title || 'Unknown Title'}</h2>
+        </div>
+        <div class="modal-body-content">
+          ${anime.images?.jpg?.large_image_url ? `
+            <img src="${anime.images.jpg.large_image_url}" alt="${anime.title}" style="width: 100%; max-height: 300px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: 1rem;" />
+          ` : ''}
+          <p><strong>Type:</strong> ${anime.type || 'N/A'}</p>
+          <p><strong>Episodes:</strong> ${anime.episodes || 'N/A'}</p>
+          <p><strong>Score:</strong> ${anime.score || 'N/A'}</p>
+          <p><strong>Status:</strong> ${anime.status || 'N/A'}</p>
+          <p><strong>Synopsis:</strong> ${anime.synopsis || 'No synopsis available.'}</p>
+        </div>
+      `;
+      
+      // Initialize Lucide icons
+      if (window.lucide) {
+        window.lucide.createIcons();
       }
     } catch (error) {
       console.error('Error fetching anime details:', error);
