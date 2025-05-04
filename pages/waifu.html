@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Waifu Generator - OtakuVerse</title>
+  <meta name="description" content="Generate random waifu images with OtakuVerse." />
+  <meta name="author" content="OtakuVerse" />
+  
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" />
+  
+  <!-- Lucide Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@latest/font/lucide.min.css" />
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/animations.css" />
+  <link rel="stylesheet" href="../css/pages/waifu.css" />
+  <link rel="stylesheet" href="/css/footer.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Navigation -->
+    <nav class="navigation">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <a href="../index.html" class="logo-link">
+            <span class="logo-otaku">Otaku</span><span class="logo-verse">Verse</span>
+          </a>
+        </div>
+        
+        <div class="desktop-menu">
+          <a href="anime.html" class="nav-link">
+            <i data-lucide="search"></i>
+            <span>Anime</span>
+          </a>
+          <a href="characters.html" class="nav-link">
+            <i data-lucide="users"></i>
+            <span>Characters</span>
+          </a>
+          <a href="quotes.html" class="nav-link">
+            <i data-lucide="message-square"></i>
+            <span>Quotes</span>
+          </a>
+          <a href="memes.html" class="nav-link">
+            <i data-lucide="smile-plus"></i>
+            <span>Memes</span>
+          </a>
+          <a href="waifu.html" class="nav-link active">
+            <i data-lucide="image"></i>
+            <span>Waifu</span>
+          </a>
+          <a href="trace.html" class="nav-link">
+            <i data-lucide="camera"></i>
+            <span>Trace</span>
+          </a>
+          <a href="watchlist.html" class="nav-link">
+            <i data-lucide="heart"></i>
+            <span>Watchlist</span>
+          </a>
+        </div>
+        
+        <div class="mobile-menu-btn">
+          <button id="menu-toggle" aria-label="Toggle mobile menu">
+            <i id="menu-icon" data-lucide="menu"></i>
+          </button>
+        </div>
+      </div>
+      
+      <div id="mobile-menu" class="mobile-menu">
+        <a href="anime.html" class="nav-link">
+          <i data-lucide="search"></i>
+          <span>Anime</span>
+        </a>
+        <a href="characters.html" class="nav-link">
+          <i data-lucide="users"></i>
+          <span>Characters</span>
+        </a>
+        <a href="quotes.html" class="nav-link">
+          <i data-lucide="message-square"></i>
+          <span>Quotes</span>
+        </a>
+        <a href="memes.html" class="nav-link">
+          <i data-lucide="smile-plus"></i>
+          <span>Memes</span>
+        </a>
+        <a href="waifu.html" class="nav-link active">
+          <i data-lucide="image"></i>
+          <span>Waifu</span>
+        </a>
+        <a href="trace.html" class="nav-link">
+          <i data-lucide="camera"></i>
+          <span>Trace</span>
+        </a>
+        <a href="watchlist.html" class="nav-link">
+          <i data-lucide="heart"></i>
+          <span>Watchlist</span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+      <div class="hero-section">
+        <h1 class="page-title">Waifu Generator</h1>
+        <p class="subtitle">Generate random anime waifu images!</p>
+      </div>
+      
+      <div class="content-section">
+        <div class="waifu-container">
+          <div class="waifu-options">
+            <div class="waifu-option-group">
+              <label for="category-select" class="waifu-label">Category:</label>
+              <select id="category-select" class="waifu-select">
+                <option value="waifu">Waifu</option>
+                <option value="neko">Neko</option>
+                <option value="shinobu">Shinobu</option>
+                <option value="megumin">Megumin</option>
+                <option value="bully">Bully</option>
+                <option value="cuddle">Cuddle</option>
+                <option value="hug">Hug</option>
+                <option value="awoo">Awoo</option>
+                <option value="pat">Pat</option>
+                <option value="smug">Smug</option>
+                <option value="bonk">Bonk</option>
+                <option value="blush">Blush</option>
+                <option value="smile">Smile</option>
+                <option value="wave">Wave</option>
+                <option value="happy">Happy</option>
+                <option value="dance">Dance</option>
+              </select>
+            </div>
+            
+            <button id="generate-btn" class="primary-button">
+              <i data-lucide="refresh-cw"></i>
+              Generate Random Waifu
+            </button>
+            
+            <button id="download-btn" class="outline-button" disabled>
+              <i data-lucide="download"></i>
+              Download Image
+            </button>
+          </div>
+          
+          <div class="waifu-display">
+            <div id="loading-spinner" class="loading-spinner-container">
+              <div class="spinner-outer">
+                <div class="spinner-inner"></div>
+              </div>
+              <p class="loading-text">Generating waifu...</p>
+            </div>
+            
+            <div id="waifu-image-container" class="waifu-image-container">
+              <img id="waifu-image" class="waifu-image" alt="Waifu image will appear here" />
+            </div>
+          </div>
+        </div>
+        
+        <div class="waifu-gallery">
+          <h2 class="section-title">Your Gallery</h2>
+          <p class="gallery-empty-text">Your saved waifus will appear here.</p>
+          <div id="gallery-grid" class="gallery-grid"></div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+    
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <span class="logo-otaku">Otaku</span><span class="logo-verse">Verse</span>
+            <p class="footer-tagline">Your Ultimate Anime Hub</p>
+          </div>
+          <div class="footer-links">
+            <div class="footer-links-group">
+              <h4 class="footer-links-title">Navigation</h4>
+              <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="anime.html">Anime</a></li>
+                <li><a href="characters.html">Characters</a></li>
+                <li><a href="quotes.html">Quotes</a></li>
+              </ul>
+            </div>
+            <div class="footer-links-group">
+              <h4 class="footer-links-title">Tools</h4>
+              <ul>
+                <li><a href="memes.html">Memes</a></li>
+                <li><a href="waifu.html">Waifu Generator</a></li>
+                <li><a href="trace.html">Trace Anime</a></li>
+                <li><a href="watchlist.html">My Watchlist</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p class="copyright">© 2025 OtakuVerse. All rights reserved.</p>
+          <p class="attribution">Images from WaifuPics API.</p>
+        </div>
+      </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script src="../js/utils/storage.js"></script>
+    <script src="../js/utils/toast.js"></script>
+    <script src="../js/utils/loading.js"></script>
+    <script src="../js/components/navigation.js"></script>
+    <script src="../js/pages/waifu.js"></script>
+  </div>
+</body>
+</html>
