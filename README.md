@@ -1,6 +1,8 @@
 # OtakuVerse
 
-Welcome to **OtakuVerse**, your ultimate anime companion! Search for your favorite anime, add them to your watchlist, and dive into a world of memes, waifus, and more!
+![image](https://github.com/user-attachments/assets/6a2fa1b9-468a-446c-ac7b-869a74619249)
+
+**OtakuVerse**, your ultimate anime companion! Search for your favorite anime, add them to your watchlist, and dive into a world of memes, waifus, and more!
 
 ## 🚀 Features
 
