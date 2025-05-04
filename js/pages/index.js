@@ -9,44 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.lucide.createIcons();
   }
 
-  // Newsletter subscription functionality
-  const newsletterInput = document.querySelector('.newsletter-input');
-  const subscribeButton = document.querySelector('.newsletter-box .secondary-button');
-  
-  if (subscribeButton) {
-    subscribeButton.addEventListener('click', () => {
-      const email = newsletterInput.value.trim();
-      
-      if (!email) {
-        window.utils.showToast({
-          title: "Error",
-          description: "Please enter your email address.",
-          variant: "error",
-        });
-        return;
-      }
-      
-      // Email validation regex
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        window.utils.showToast({
-          title: "Error",
-          description: "Please enter a valid email address.",
-          variant: "error",
-        });
-        return;
-      }
-      
-      // For demo purposes, just show a success message
-      window.utils.showToast({
-        title: "Success",
-        description: "Thanks for subscribing to our newsletter!",
-        variant: "success",
-      });
-      
-      newsletterInput.value = '';
-    });
-  }
   
   // Add hover animation to card stack
   const animeCardPreviews = document.querySelectorAll('.anime-card-preview');
