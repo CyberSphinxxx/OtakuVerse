@@ -184,9 +184,6 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log('No cached quotes, using fallback');
       const fallbackQuote = getRandomFallbackQuote();
       
-      // Cache the fallback quote
-      cachedQuotes.push(fallbackQuote);
-      saveToCache(cachedQuotes);
 
       console.log('Displaying fallback quote:', fallbackQuote);
       displayQuote(fallbackQuote);
