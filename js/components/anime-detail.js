@@ -167,25 +167,35 @@ function setupAnimeWatchlist(container, anime) {
         <span>Watching</span>
       </button>
       <button class="watchlist-option" data-status="completed">
-        <i data-lucide="check"></i>
+        <i data-lucide="check">✔️</i>
         <span>Completed</span>
       </button>
       <button class="watchlist-option" data-status="plan">
-        <i data-lucide="plus"></i>
+        <i data-lucide="plus">📔</i>
         <span>Plan to Watch</span>
       </button>
       <button class="watchlist-option" data-status="dropped">
-        <i data-lucide="x"></i>
+        <i data-lucide="x">🗑️</i>
         <span>Dropped</span>
       </button>
     `;
     
     // Position the dropdown - FIXED positioning to ensure it's visible
     const rect = watchlistBtn.getBoundingClientRect();
+    const dropdownHeight = 100;
+    const spaceBelow = window.innerHeight - rect.bottom;
+    const spaceAbove = rect.top;
+    
     dropdown.style.position = 'fixed';
-    dropdown.style.top = `${rect.bottom + window.scrollY + 5}px`;
-    dropdown.style.left = `${rect.left + window.scrollX}px`;
-    dropdown.style.zIndex = '5000'; // Ensure it's above everything else
+    
+    if (spaceBelow < dropdownHeight && spaceAbove > dropdownHeight) {
+      dropdown.style.top = `${rect.top - dropdownHeight - 50}px`;
+    } else {
+      dropdown.style.top = `${rect.bottom + 5}px`;
+    }
+    // Added to change the left position to be more centered
+    dropdown.style.left = `${rect.left - 225}px`; 
+    dropdown.style.zIndex = '5000';
     
     // Add dropdown to the page
     document.body.appendChild(dropdown);

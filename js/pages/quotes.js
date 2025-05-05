@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (quoteCard) quoteCard.style.display = 'block';
         return;
       }
-
+      
       // Use a fallback quote
       console.log('No cached quotes, using fallback');
       const fallbackQuote = getRandomFallbackQuote();
