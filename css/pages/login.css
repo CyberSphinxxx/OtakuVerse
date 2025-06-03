@@ -1,0 +1,326 @@
+/* Existing styles from your provided index.css assumed to be included */
+/* Enhanced styles for user menu and login modal */
+
+.user-menu {
+  position: relative;
+}
+
+.user-toggle {
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-md);
+  transition: background-color var(--transition-fast) ease;
+}
+
+.user-toggle:hover {
+  background-color: rgba(139, 92, 246, 0.1);
+}
+
+.user-dropdown {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  background-color: var(--card-bg);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  width: 200px;
+  z-index: 100;
+  overflow: hidden;
+  animation: slide-down var(--transition-normal) ease;
+}
+
+.user-status-display {
+  padding: 0.75rem 1rem;
+  background-color: rgba(139, 92, 246, 0.05);
+  border-bottom: 1px solid var(--border-color);
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.user-dropdown-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: background-color var(--transition-fast) ease, color var(--transition-fast) ease;
+}
+
+.user-dropdown-item:hover {
+  background-color: rgba(139, 92, 246, 0.1);
+  color: var(--primary);
+}
+
+.user-dropdown-item i {
+  margin-right: 0.75rem;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  animation: fade-in var(--transition-normal) ease;
+}
+
+.modal-content {
+  background-color: var(--card-bg);
+  max-width: 450px;
+  width: 90%;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  overflow: hidden;
+  transform: scale(0.95);
+  animation: modal-scale-in var(--transition-slow) ease forwards;
+}
+
+.modal-close {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.5rem;
+}
+
+.modal-close button {
+  background-color: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color var(--transition-fast) ease, color var(--transition-fast) ease;
+}
+
+.modal-close button:hover {
+  background-color: var(--error);
+  color: white;
+}
+
+.modal-body {
+  padding: 1rem;
+}
+
+.modal-title {
+  font-size: 1.75rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  text-align: center;
+}
+
+.modal-subtitle {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.login-form-container {
+  padding: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+}
+
+.login-form input,
+.signup-form input {
+  width: 100%;
+  padding: 0.75rem 2.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background-color: var(--background);
+  transition: border-color var(--transition-fast) ease, box-shadow var(--transition-fast) ease;
+}
+
+.login-form input:focus,
+.signup-form input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+}
+
+.toggle-password {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.25rem;
+  transition: color var(--transition-fast) ease;
+}
+
+.toggle-password:hover {
+  color: var(--primary);
+}
+
+.modal-login-btn,
+.modal-signup-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  color: white;
+  background-color: var(--primary);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color var(--transition-fast) ease, transform var(--transition-fast) ease, box-shadow var(--transition-fast) ease;
+  margin-top: 1rem;
+}
+
+.modal-login-btn:hover,
+.modal-signup-btn:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
+}
+
+.modal-login-btn:active,
+.modal-signup-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.modal-login-btn i,
+.modal-signup-btn i {
+  margin-right: 0.5rem;
+}
+
+.guest-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  color: var(--primary);
+  background-color: transparent;
+  border: 2px solid var(--primary);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color var(--transition-fast) ease, color var(--transition-fast) ease, transform var(--transition-fast) ease, box-shadow var(--transition-fast) ease;
+  margin-top: 0.75rem;
+}
+
+.guest-button:hover {
+  background-color: var(--primary);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
+}
+
+.guest-button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.guest-button i {
+  margin-right: 0.5rem;
+}
+
+.signup-text {
+  margin-top: 1.25rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.signup-text a {
+  color: var(--primary);
+  font-weight: 600;
+  transition: color var(--transition-fast) ease;
+}
+
+.signup-text a:hover {
+  color: var(--primary-dark);
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes modal-scale-in {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 768px) {
+  .login-form-container {
+    padding: 2rem;
+  }
+
+  .modal-title {
+    font-size: 2rem;
+  }
+
+  .modal-close button {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}

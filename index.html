@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,13 +14,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@latest/font/lucide.min.css" />
   
   <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/pages/login.css">
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/components.css" />
   <link rel="stylesheet" href="css/layout.css" />
   <link rel="stylesheet" href="css/animations.css" />
   <link rel="stylesheet" href="css/pages/home.css" />
-  <link rel="stylesheet" href="/css/pages/index.css">
-  <link rel="stylesheet" href="/css/footer.css">
+  <link rel="stylesheet" href="css/pages/index.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+
 </head>
 <body>
   <div id="app">
@@ -63,6 +64,25 @@
             <i data-lucide="heart"></i>
             <span>Watchlist</span>
           </a>
+          <div class="user-menu">
+            <button id="user-toggle" class="nav-link user-toggle" aria-label="User menu">
+              <i data-lucide="user"></i>
+              <span id="user-status">Login</span>
+            </button>
+            <div id="user-dropdown" class="user-dropdown" style="display: none;">
+              <div class="user-status-display">
+                <span id="dropdown-user-status">Login</span>
+              </div>
+              <button id="logout-btn" class="user-dropdown-item" style="display: none;">
+                <i data-lucide="log-out"></i>
+                Log Out
+              </button>
+              <button id="login-link" class="user-dropdown-item">
+                <i data-lucide="log-in"></i>
+                Log In / Sign Up
+              </button>
+            </div>
+          </div>
         </div>
         
         <div class="mobile-menu-btn">
@@ -101,8 +121,101 @@
           <i data-lucide="heart"></i>
           <span>Watchlist</span>
         </a>
+        <div class="user-menu">
+          <button id="mobile-login-link" class="nav-link">
+            <i data-lucide="log-in"></i>
+            <span id="mobile-user-status">Login</span>
+          </button>
+          <button id="mobile-logout-btn" class="nav-link" style="display: none;">
+            <i data-lucide="log-out"></i>
+            <span>Log Out</span>
+          </button>
+        </div>
       </div>
     </nav>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal" style="display: none;">
+      <div class="modal-content">
+        <div class="modal-close">
+          <button id="modal-close-btn" aria-label="Close modal">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h2 class="modal-title">Welcome to OtakuVerse</h2>
+          <p class="modal-subtitle">Log in to access your watchlist, or continue as a guest to explore</p>
+          <div class="login-form-container">
+            <div class="login-form">
+              <div class="form-group">
+                <label for="username">Username</label>
+                <div class="input-wrapper">
+                  <i data-lucide="user" class="input-icon"></i>
+                  <input type="text" id="username" placeholder="Enter your username" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <div class="input-wrapper">
+                  <i data-lucide="lock" class="input-icon"></i>
+                  <input type="password" id="password" placeholder="Enter your password" required />
+                  <button id="toggle-password" class="toggle-password" type="button" aria-label="Toggle password visibility">
+                    <i data-lucide="eye"></i>
+                  </button>
+                </div>
+              </div>
+              <button class="primary-button login-button" id="login-btn">
+                <i data-lucide="log-in"></i>
+                Log In
+              </button>
+              <button class="outline-button guest-button" id="guest-btn">
+                <i data-lucide="user-x"></i>
+                Continue as Guest
+              </button>
+              <p class="signup-text">
+                Don't have an account? <a href="#" id="signup-link">Sign Up</a>
+              </p>
+            </div>
+            <div class="signup-form" style="display: none;">
+              <div class="form-group">
+                <label for="signup-username">Username</label>
+                <div class="input-wrapper">
+                  <i data-lucide="user" class="input-icon"></i>
+                  <input type="text" id="signup-username" placeholder="Choose a username" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="signup-password">Password</label>
+                <div class="input-wrapper">
+                  <i data-lucide="lock" class="input-icon"></i>
+                  <input type="password" id="signup-password" placeholder="Choose a password" required />
+                  <button id="toggle-signup-password" class="toggle-password" type="button" aria-label="Toggle password visibility">
+                    <i data-lucide="eye"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="confirm-password">Confirm Password</label>
+                <div class="input-wrapper">
+                  <i data-lucide="lock" class="input-icon"></i>
+                  <input type="password" id="confirm-password" placeholder="Confirm your password" required />
+                  <button id="toggle-confirm-password" class="toggle-password" type="button" aria-label="Toggle password visibility">
+                    <i data-lucide="eye"></i>
+                  </button>
+                </div>
+              </div>
+              <button class="primary-button login-button" id="signup-btn">
+                <i data-lucide="user-plus"></i>
+                Sign Up
+              </button>
+              <p class="signup-text">
+                Already have an account? <a href="#" id="login-link">Log In</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Hero Section -->
     <main class="container">
@@ -144,9 +257,9 @@
             <div class="feature-icon">
               <i data-lucide="search"></i>
             </div>
-            <h3 class="feature-title">Browse Anime</h3>
-            <p class="feature-description">Find your favorite shows with our comprehensive anime database.</p>
-            <a href="pages/anime.html" class="feature-link">Browse Now</a>
+            <h3 class="feature-title">Browse</h3>
+            <p class="feature-description">Find your favorite shows with our comprehensive anime.</p>
+            <a href="pages/anime.html" class="feature-link">Browse Anime</a>
           </div>
           
           <div class="feature-card">
@@ -164,7 +277,7 @@
             </div>
             <h3 class="feature-title">Quotes</h3>
             <p class="feature-description">Discover memorable quotes from anime that inspire and entertain.</p>
-            <a href="pages/quotes.html" class="feature-link">Read Quotes</a>
+            <a href="pages/quotes.html" class="feature-link">Quotes</a>
           </div>
           
           <div class="feature-card">
@@ -182,58 +295,59 @@
             </div>
             <h3 class="feature-title">Waifu</h3>
             <p class="feature-description">Generate random waifu images for your collection.</p>
-            <a href="pages/waifu.html" class="feature-link">Generate Waifu</a>
+            <a href="pages/waifu.html" class="feature-link">Waifu</a>
           </div>
           
           <div class="feature-card">
             <div class="feature-icon">
               <i data-lucide="camera"></i>
             </div>
-            <h3 class="feature-title">Trace Anime</h3>
+            <h3 class="feature-title">Trace</h3>
             <p class="feature-description">Upload screenshots to identify which anime they're from.</p>
-            <a href="pages/trace.html" class="feature-link">Trace Now</a>
+            <a href="pages/trace.html" class="feature-link">Trace</a>
           </div>
         </div>
       </section>
       
-    <!-- Footer -->
-    <footer class="site-footer">
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-logo">
-            <span class="logo-otaku">Otaku</span><span class="logo-verse">Verse</span>
-            <p class="footer-tagline">Your Ultimate Anime Hub</p>
+      <!-- Footer -->
+      <footer class="site-footer">
+        <div class="container">
+          <div class="footer-content">
+            <div class="footer-logo">
+              <span class="logo-otaku">Otaku</span><span class="logo-verse">Verse</span>
+              <p class="footer-tagline">Your Ultimate Anime Hub</p>
+            </div>
+            <div class="footer-links">
+              <div class="footer-links-group">
+                <h4 class="footer-links-title">Navigation</h4>
+                <ul>
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="pages/anime.html">Anime</a></li>
+                  <li><a href="pages/characters.html">Characters</a></li>
+                  <li><a href="pages/quotes.html">Quotes</a></li>
+                </ul>
+              </div>
+              <div class="footer-links-group">
+                <h4 class="footer-links-title">Tools</h4>
+                <ul>
+                  <li><a href="pages/memes.html">Memes</a></li>
+                  <li><a href="pages/waifu.html">Waifu Generator</a></li>
+                  <li><a href="pages/trace.html">Trace Anime</a></li>
+                  <li><a href="pages/watchlist.html">My Watchlist</a></li>
+                </ul>
+              </div>
+            </div>
           </div>
-          <div class="footer-links">
-            <div class="footer-links-group">
-              <h4 class="footer-links-title">Navigation</h4>
-              <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="pages/anime.html">Anime</a></li>
-                <li><a href="pages/characters.html">Characters</a></li>
-                <li><a href="pages/quotes.html">Quotes</a></li>
-              </ul>
-            </div>
-            <div class="footer-links-group">
-              <h4 class="footer-links-title">Tools</h4>
-              <ul>
-                <li><a href="pages/memes.html">Memes</a></li>
-                <li><a href="pages/waifu.html">Waifu Generator</a></li>
-                <li><a href="pages/trace.html">Trace Anime</a></li>
-                <li><a href="pages/watchlist.html">My Watchlist</a></li>
-              </ul>
-            </div>
+          <div class="footer-bottom">
+            <p class="copyright">© 2025 OtakuVerse. All rights reserved.</p>
+            <p class="attribution">Data provided by Jikan API, AnimeChan, and WaifuPics.</p>
           </div>
         </div>
-        <div class="footer-bottom">
-          <p class="copyright">© 2025 OtakuVerse. All rights reserved.</p>
-          <p class="attribution">Data provided by Jikan API, AnimeChan, and WaifuPics.</p>
-        </div>
-      </div>
-    </footer>
+      </footer>
 
-    <!-- Toast Container -->
-    <div id="toast-container" class="toast-container"></div>
+      <!-- Toast Container -->
+      <div id="toast-container" class="toast-container"></div>
+    </div>
     
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
